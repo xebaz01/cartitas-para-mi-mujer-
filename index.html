@@ -6,8 +6,8 @@
     <title>Para el amor de mi vida</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             margin: 0;
             padding: 20px;
             display: flex;
@@ -15,95 +15,121 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            color: #4a4a4a;
+            color: #333;
             overflow-x: hidden;
         }
 
         .container {
-            max-width: 600px;
+            max-width: 650px;
             width: 100%;
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         h1 {
-            color: #d81b60;
-            font-size: 2rem;
+            color: #fff;
+            font-size: 2.2rem;
             margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        p {
+        p.subtitulo {
             font-size: 1.1rem;
-            color: #666;
-            line-height: 1.6;
+            color: #f1f1f1;
+            margin-bottom: 30px;
         }
 
-        .btn-accion {
-            background-color: #e91e63;
+        .btn-abrir {
+            background-color: #e74c3c;
             color: white;
             border: none;
-            padding: 12px 25px;
-            font-size: 1.1rem;
+            padding: 14px 30px;
+            font-size: 1.2rem;
+            font-family: 'Georgia', serif;
             border-radius: 30px;
             cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
             transition: all 0.3s ease;
         }
 
-        .btn-accion:hover {
-            background-color: #c2185b;
+        .btn-abrir:hover {
+            background-color: #c0392b;
             transform: scale(1.05);
         }
 
-        .btn-secundario {
-            background-color: #78909c;
-            margin-right: 10px;
-        }
-
-        .btn-secundario:hover {
-            background-color: #607d8b;
-        }
-
-        /* Sección de las cartas (ocultas por defecto) */
-        .seccion-carta {
+        /* Estilo de hoja de carta real */
+        .hoja-carta {
             display: none;
-            margin-top: 20px;
+            background: #fffdf9;
+            background-image: linear-gradient(#f1f1f1 1px, transparent 1px);
+            background-size: 100% 30px;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             text-align: left;
-            animation: deslizarArriba 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            margin-top: 20px;
+            position: relative;
+            animation: abrirCarta 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            border: 1px solid #dcd6cd;
         }
 
-        .carta-tarjeta {
-            background: #fff;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            border-left: 6px solid #e91e63;
-        }
-
-        .carta-tarjeta h3 {
+        .hoja-carta h3 {
+            color: #c0392b;
+            font-family: 'Georgia', serif;
             margin-top: 0;
-            color: #c2185b;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
         }
 
-        /* Animación de papel subiendo */
-        @keyframes deslizarArriba {
-            from {
+        .hoja-carta p {
+            font-family: 'Georgia', serif;
+            font-size: 1.15rem;
+            color: #2c3e50;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Animación de apertura estilo papel desplegándose */
+        @keyframes abrirCarta {
+            0% {
                 opacity: 0;
-                transform: translateY(50px) scale(0.95);
+                transform: translateY(80px) scaleY(0.5);
             }
-            to {
+            100% {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0) scaleY(1);
             }
         }
 
-        /* Estilo de fuegos artificiales */
+        .botones-navegacion {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            border-top: 1px solid #e0dcd0;
+            padding-top: 15px;
+        }
+
+        .btn-nav {
+            background-color: #34495e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: background 0.3s;
+        }
+
+        .btn-nav:hover {
+            background-color: #2c3e50;
+        }
+
+        /* Pantalla de Fuegos Artificiales */
         .fuegos-artificiales {
             display: none;
             position: fixed;
@@ -111,7 +137,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
             z-index: 999;
             justify-content: center;
             align-items: center;
@@ -120,10 +146,10 @@
         }
 
         .fuegos-artificiales h2 {
-            color: #ff4081;
-            font-size: 3rem;
-            text-shadow: 0 0 20px #ff80ab, 0 0 30px #f50057;
-            animation: latido 1.2s infinite alternate;
+            color: #ffcc00;
+            font-size: 2.8rem;
+            text-shadow: 0 0 20px #ff3366, 0 0 40px #ff0055;
+            animation: latido 1s infinite alternate;
             text-align: center;
             padding: 0 20px;
         }
@@ -132,12 +158,6 @@
             from { transform: scale(1); }
             to { transform: scale(1.1); }
         }
-
-        .botones-navegacion {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
     </style>
 </head>
 <body>
@@ -145,72 +165,70 @@
     <!-- Pantalla de Fuegos Artificiales para la Carta 3 -->
     <div id="pantallaFuegos" class="fuegos-artificiales">
         <h2>✨ ¡Feliz Año Nuevo! 🎆🎇</h2>
-        <p style="color: white; font-size: 1.2rem;">Preparando tu última carta...</p>
+        <p style="color: white; font-size: 1.2rem; font-family: Georgia, serif;">Abriendo tu última carta...</p>
     </div>
 
-    <div class="container" id="mainContainer">
+    <div class="container">
         <h1>¡Feliz Fin de Año, mi amor! 🥂 ✨</h1>
-        <p>Este es el inicio de un rincón especial lleno de cartas solo para ti.</p>
+        <p class="subtitulo">Tengo preparadas unas palabras muy especiales para ti.</p>
         
-        <!-- Botón inicial para abrir la primera carta -->
-        <button class="btn-accion" onclick="abrirCarta(1)">Presiona aquí 💌</button>
+        <!-- Botón inicial para abrir la Carta 1 -->
+        <button class="btn-abrir" onclick="mostrarCarta(1)">Abrir primera carta 💌</button>
 
         <!-- CARTA 1 -->
-        <div id="carta1" class="seccion-carta">
-            <div class="carta-tarjeta">
-                <h3>Carta 1: El inicio de todo y nuestra confianza</h3>
-                <p>Cuando te conocí, creí que ibas a ser una persona pasajera, como los demás, como todas las personas que conocí y que me hablaron. Yo siempre fui alguien muy sociable, pero contigo siempre fue más que eso; tuve una conexión y una confianza muy fuerte contigo. ¿Pero sabes por qué? Eres una persona que tiene mucho conocimiento y sabe tantas cosas... Tal vez yo sea solo un chico un poco inmaduro, pero me hiciste cambiar por completo mi forma de pensar.</p>
-                <div class="botones-navegacion">
-                    <span></span>
-                    <button class="btn-accion" onclick="abrirCarta(2)">Siguiente carta ➡️</button>
-                </div>
+        <div id="carta1" class="hoja-carta">
+            <h3>Carta 1: El inicio de todo y nuestra confianza</h3>
+            <p>Cuando te conocí, creí que ibas a ser una persona pasajera, como los demás, como todas las personas que conocí y que me hablaron. Yo siempre fui alguien muy sociable, pero contigo siempre fue más que eso; tuve una conexión y una confianza muy fuerte contigo. ¿Pero sabes por qué? Eres una persona que tiene mucho conocimiento y sabe tantas cosas... Tal vez yo sea solo un chico un poco inmaduro, pero me hiciste cambiar por completo mi forma de pensar.</p>
+            <div class="botones-navegacion">
+                <span></span>
+                <button class="btn-nav" onclick="mostrarCarta(2)">Siguiente carta ➡️</button>
             </div>
         </div>
 
         <!-- CARTA 2 -->
-        <div id="carta2" class="seccion-carta">
-            <div class="carta-tarjeta">
-                <h3>Carta 2: Mi pilar y mi guía</h3>
-                <p>Siempre has estado ahí para mí, has sido mi pilar. Puede que sea un poco terco, pero siempre me has tenido paciencia, nunca te enojas, siempre me escuchas y quieres lo mejor para mí. Gracias por tu tiempo y por todo lo que has hecho por mí, tanto en lo emocional como en lo personal. Me has aconsejado cambiar mi mentalidad y es algo que valoro muchísimo. Espero ser también un ejemplo a seguir para los demás cuando crezca y superarme a mí mismo, tal como me has dicho que lo haga.</p>
-                <div class="botones-navegacion">
-                    <button class="btn-accion btn-secundario" onclick="abrirCarta(1)">⬅️ Volver</button>
-                    <button class="btn-accion" onclick="lanzarFuegosYCarta3()">Siguiente carta 🎆</button>
-                </div>
+        <div id="carta2" class="hoja-carta">
+            <h3>Carta 2: Mi pilar y mi guía</h3>
+            <p>Siempre has estado ahí para mí, has sido mi pilar. Puede que sea un poco terco, pero siempre me has tenido paciencia, nunca te enojas, siempre me escuchas y quieres lo mejor para mí. Gracias por tu tiempo y por todo lo que has hecho por mí, tanto en lo emocional como en lo personal. Me has aconsejado cambiar mi mentalidad y es algo que valoro muchísimo. Espero ser también un ejemplo a seguir para los demás cuando crezca y superarme a mí mismo, tal como me has dicho que lo haga.</p>
+            <div class="botones-navegacion">
+                <button class="btn-nav" onclick="mostrarCarta(1)">⬅️ Volver</button>
+                <button class="btn-nav" onclick="lanzarFuegosYCarta3()">Siguiente carta 🎆</button>
             </div>
         </div>
 
         <!-- CARTA 3 -->
-        <div id="carta3" class="seccion-carta">
-            <div class="carta-tarjeta">
-                <h3>Carta 3: Un nuevo año a tu lado</h3>
-                <p>En este nuevo año todo va a cambiar, verás una nueva versión mía. Podrás estar conmigo y decir: "Este es el hombre que siempre quise tener a mi lado", seré el hombre que tanto has querido. Por eso quiero que me sigas guiando, no te aburras de mí; sé que puedo llegar a ser inexperto o a veces un poco torpe, pero en serio tenme paciencia. Quiero cambiar y, si lo hago, verás que la pasaremos súper bien. Espero que este año nos podamos conocer aún más, pasar tiempo juntos y que sea el comienzo de una vida hermosa contigo a mi lado.<br><br>Quiero que seas tú, nadie más; quiero estar contigo y que tú estés para mí siempre. Quiero que el año comience con amor en cada momento. Te deseo un muy feliz año y recuerda: si no es contigo, no será un año feliz para mí. ¡Te amo de aquí al infinito! ❤️</p>
-                <div class="botones-navegacion">
-                    <button class="btn-accion btn-secundario" onclick="abrirCarta(2)">⬅️ Volver</button>
-                    <span></span>
-                </div>
+        <div id="carta3" class="hoja-carta">
+            <h3>Carta 3: Un nuevo año a tu lado</h3>
+            <p>En este nuevo año todo va a cambiar, verás una nueva versión mía. Podrás estar conmigo y decir: "Este es el hombre que siempre quise tener a mi lado", seré el hombre que tanto has querido. Por eso quiero que me sigas guiando, no te aburras de mí; sé que puedo llegar a ser inexperto o a veces un poco torpe, pero en serio tenme paciencia. Quiero cambiar y, si lo hago, verás que la pasaremos súper bien. Espero que este año nos podamos conocer aún más, pasar tiempo juntos y que sea el comienzo de una vida hermosa contigo a mi lado.<br><br>Quiero que seas tú, nadie más; quiero estar contigo y que tú estés para mí siempre. Quiero que el año comience con amor en cada momento. Te deseo un muy feliz año y recuerda: si no es contigo, no será un año feliz para mí. ¡Te amo de aquí al infinito! ❤️</p>
+            <div class="botones-navegacion">
+                <button class="btn-nav" onclick="mostrarCarta(2)">⬅️ Volver</button>
+                <span></span>
             </div>
         </div>
     </div>
 
     <script>
-        function abrirCarta(numero) {
-            document.querySelector('.container > button').style.display = 'none';
+        function mostrarCarta(numero) {
+            // Ocultar botón principal y todas las cartas
+            document.querySelector('.btn-abrir').style.display = 'none';
             document.getElementById('carta1').style.display = 'none';
             document.getElementById('carta2').style.display = 'none';
             document.getElementById('carta3').style.display = 'none';
 
-            let cartaSeleccionada = document.getElementById('carta' + numero);
-            cartaSeleccionada.style.display = 'block';
-            cartaSeleccionada.scrollIntoView({ behavior: 'smooth' });
+            // Mostrar la carta elegida con efecto de hoja desplegándose
+            let cartaActiva = document.getElementById('carta' + numero);
+            cartaActiva.style.display = 'block';
+            cartaActiva.scrollIntoView({ behavior: 'smooth' });
         }
 
         function lanzarFuegosYCarta3() {
+            // Mostrar los fuegos artificiales de celebración
             let fuegos = document.getElementById('pantallaFuegos');
             fuegos.style.display = 'flex';
 
+            // Esperar 2.5 segundos para cerrar los fuegos artificiales y mostrar la carta 3
             setTimeout(function() {
                 fuegos.style.display = 'none';
-                abrirCarta(3);
+                mostrarCarta(3);
             }, 2500);
         }
     </script>
