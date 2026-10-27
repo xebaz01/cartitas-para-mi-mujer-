@@ -23,7 +23,7 @@
             max-width: 650px;
             width: 100%;
             text-align: center;
-            background: rgba(24df, 235, 220, 0.15);
+            background: rgba(244, 234, 220, 0.15);
             backdrop-filter: blur(8px);
             padding: 30px;
             border-radius: 15px;
@@ -44,12 +44,12 @@
             margin-bottom: 30px;
         }
 
-        /* Estilo del Sobrecito / Carta Cerrada */
+        /* Estilo del Sobre / Carta Cerrada */
         .sobre-container {
             background: #e6d7c3;
             background-image: radial-gradient(circle, #f4eadc 10%, #d8c5a9 90%);
             border: 2px solid #b89768;
-            padding: 40px 20px;
+            padding: 35px 20px;
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.4);
             margin: 20px auto;
@@ -64,43 +64,41 @@
         }
 
         .sello-cera {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: radial-gradient(circle, #c0392b 0%, #962d22 100%);
             border-radius: 50%;
-            margin: 0 auto 15px auto;
+            margin: 0 auto 12px auto;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
             border: 2px dashed #e74c3c;
             color: #f1c40f;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
         .texto-sobre {
             font-family: 'Georgia', serif;
             color: #5c4033;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: bold;
         }
 
-        /* Estilo de hoja de carta real saliendo del sobre */
+        /* Estilo de hoja de carta vintage (con textura inspirada en tu imagen) */
         .hoja-carta {
             display: none;
-            background: #fdfbf7;
-            background-image: 
-                linear-gradient(to right, rgba(184, 151, 104, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(184, 151, 104, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-color: #f7f1e5;
+            background-image: linear-gradient(to bottom, rgba(212, 196, 168, 0.3) 1px, transparent 1px);
+            background-size: 100% 32px;
             padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
             text-align: left;
             margin-top: 20px;
             position: relative;
             animation: deslizarDesdeSobre 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            border: 2px solid #b89768;
+            border: 3px solid #b89768;
         }
 
         .hoja-carta p {
@@ -111,7 +109,6 @@
             margin-bottom: 20px;
         }
 
-        /* Animación de papel saliendo hacia arriba suavemente */
         @keyframes deslizarDesdeSobre {
             0% {
                 opacity: 0;
@@ -127,7 +124,7 @@
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
-            border-top: 1px solid #d4c5a9;
+            border-top: 1px solid #b89768;
             padding-top: 15px;
         }
 
@@ -230,8 +227,8 @@
         <h1>¡Feliz Fin de Año, mi amor! 🥂 ✨</h1>
         <p class="subtitulo">Tengo tres sobres con mensajes muy especiales para ti.</p>
         
-        <!-- SOBRE 1 (Pantalla Inicial) -->
-        <div id="sobre1" class="sobre-container" onclick="mostrarCarta(1)">
+        <!-- SOBRE 1 -->
+        <div id="sobre1" class="sobre-container" onclick="abrirCarta(1)">
             <div class="sello-cera">💌</div>
             <div class="texto-sobre">Abrir primera carta</div>
         </div>
@@ -241,12 +238,12 @@
             <p>Cuando te conocí, creí que ibas a ser una persona pasajera, como los demás, como todas las personas que conocí y que me hablaron. Yo siempre fui alguien muy sociable, pero contigo siempre fue más que eso; tuve una conexión y una confianza muy fuerte contigo. ¿Pero sabes por qué? Eres una persona que tiene mucho conocimiento y sabe tantas cosas... Tal vez yo sea solo un chico un poco inmaduro, pero me hiciste cambiar por completo mi forma de pensar.</p>
             <div class="botones-navegacion">
                 <span></span>
-                <button class="btn-nav" onclick="mostrarCarta(2)">Siguiente carta ➡️</button>
+                <button class="btn-nav" onclick="siguienteSobre(2)">Siguiente sobre ➡️</button>
             </div>
         </div>
 
         <!-- SOBRE 2 -->
-        <div id="sobre2" class="sobre-container" style="display:none;" onclick="mostrarCarta(2)">
+        <div id="sobre2" class="sobre-container" style="display:none;" onclick="abrirCarta(2)">
             <div class="sello-cera">💌</div>
             <div class="texto-sobre">Abrir segunda carta</div>
         </div>
@@ -255,13 +252,13 @@
         <div id="carta2" class="hoja-carta">
             <p>Siempre has estado ahí para mí, has sido mi pilar. Puede que sea un poco terco, pero siempre me has tenido paciencia, nunca te enojas, siempre me escuchas y quieres lo mejor para mí. Gracias por tu tiempo y por todo lo que has hecho por mí, tanto en lo emocional como en lo personal. Me has aconsejado cambiar mi mentalidad y es algo que valoro muchísimo. Espero ser también un ejemplo a seguir para los demás cuando crezca y superarme a mí mismo, tal como me has dicho que lo haga.</p>
             <div class="botones-navegacion">
-                <button class="btn-nav" onclick="regresarSobre(1)">⬅️ Volver al sobre</button>
-                <button class="btn-nav" onclick="lanzarFuegosYCarta3()">Siguiente carta 🎆</button>
+                <button class="btn-nav" onclick="regresarSobre(1)">⬅️ Volver</button>
+                <button class="btn-nav" onclick="lanzarFuegosYCarta3()">Siguiente sobre 🎆</button>
             </div>
         </div>
 
         <!-- SOBRE 3 -->
-        <div id="sobre3" class="sobre-container" style="display:none;" onclick="mostrarCarta(3)">
+        <div id="sobre3" class="sobre-container" style="display:none;" onclick="abrirCarta(3)">
             <div class="sello-cera">💌</div>
             <div class="texto-sobre">Abrir tercera carta</div>
         </div>
@@ -270,7 +267,7 @@
         <div id="carta3" class="hoja-carta">
             <p>En este nuevo año todo va a cambiar, verás una nueva versión mía. Podrás estar conmigo y decir: "Este es el hombre que siempre quise tener a mi lado", seré el hombre que tanto has querido. Por eso quiero que me sigas guiando, no te aburras de mí; sé que puedo llegar a ser inexperto o a veces un poco torpe, pero en serio tenme paciencia. Quiero cambiar y, si lo hago, verás que la pasaremos súper bien. Espero que este año nos podamos conocer aún más, pasar tiempo juntos y que sea el comienzo de una vida hermosa contigo a mi lado.<br><br>Quiero que seas tú, nadie más; quiero estar contigo y que tú estés para mí siempre. Quiero que el año comience con amor en cada momento. Te deseo un muy feliz año y recuerda: si no es contigo, no será un año feliz para mí. ¡Te amo de aquí al infinito! ❤️</p>
             <div class="botones-navegacion">
-                <button class="btn-nav" onclick="regresarSobre(2)">⬅️ Volver al sobre</button>
+                <button class="btn-nav" onclick="regresarSobre(2)">⬅️ Volver</button>
                 <span></span>
             </div>
         </div>
@@ -299,7 +296,7 @@
             document.getElementById('carta3').style.display = 'none';
         }
 
-        function mostrarCarta(numero) {
+        function abrirCarta(numero) {
             if (musica.paused) {
                 musica.play();
                 btnMusica.innerText = "Pausar";
@@ -311,13 +308,16 @@
             cartaActiva.scrollIntoView({ behavior: 'smooth' });
         }
 
+        function siguienteSobre(numeroSobre) {
+            ocultarTodo();
+            document.getElementById('sobre' + numeroSobre).style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function regresarSobre(numeroCartaAnterior) {
             ocultarTodo();
-            if (numeroCartaAnterior === 1) {
-                document.getElementById('sobre1').style.display = 'block';
-            } else if (numeroCartaAnterior === 2) {
-                document.getElementById('sobre2').style.display = 'block';
-            }
+            document.getElementById('sobre' + numeroCartaAnterior).style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function lanzarFuegosYCarta3() {
