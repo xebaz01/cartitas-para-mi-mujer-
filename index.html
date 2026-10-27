@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: linear-gradient(135deg, #2c1d1a 0%, #4a3530 100%);
             margin: 0;
             padding: 20px;
             display: flex;
@@ -15,7 +15,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            color: #333;
+            color: #3b2f2f;
             overflow-x: hidden;
         }
 
@@ -23,86 +23,103 @@
             max-width: 650px;
             width: 100%;
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(24df, 235, 220, 0.15);
+            backdrop-filter: blur(8px);
             padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         h1 {
-            color: #fff;
+            color: #f3e9d2;
             font-size: 2.2rem;
             margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         p.subtitulo {
             font-size: 1.1rem;
-            color: #f1f1f1;
+            color: #d8cbb8;
             margin-bottom: 30px;
         }
 
-        .btn-abrir {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            font-size: 1.2rem;
-            font-family: 'Georgia', serif;
-            border-radius: 30px;
+        /* Estilo del Sobrecito / Carta Cerrada */
+        .sobre-container {
+            background: #e6d7c3;
+            background-image: radial-gradient(circle, #f4eadc 10%, #d8c5a9 90%);
+            border: 2px solid #b89768;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            margin: 20px auto;
+            position: relative;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
+            max-width: 400px;
         }
 
-        .btn-abrir:hover {
-            background-color: #c0392b;
-            transform: scale(1.05);
+        .sobre-container:hover {
+            transform: scale(1.03);
         }
 
-        /* Estilo de hoja de carta real */
+        .sello-cera {
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, #c0392b 0%, #962d22 100%);
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            border: 2px dashed #e74c3c;
+            color: #f1c40f;
+            font-size: 1.5rem;
+        }
+
+        .texto-sobre {
+            font-family: 'Georgia', serif;
+            color: #5c4033;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Estilo de hoja de carta real saliendo del sobre */
         .hoja-carta {
             display: none;
-            background: #fffdf9;
-            background-image: linear-gradient(#f1f1f1 1px, transparent 1px);
-            background-size: 100% 30px;
+            background: #fdfbf7;
+            background-image: 
+                linear-gradient(to right, rgba(184, 151, 104, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(184, 151, 104, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
             padding: 40px 30px;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             text-align: left;
             margin-top: 20px;
             position: relative;
-            animation: abrirCarta 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            border: 1px solid #dcd6cd;
-        }
-
-        .hoja-carta h3 {
-            color: #c0392b;
-            font-family: 'Georgia', serif;
-            margin-top: 0;
-            font-size: 1.5rem;
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 10px;
+            animation: deslizarDesdeSobre 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            border: 2px solid #b89768;
         }
 
         .hoja-carta p {
             font-family: 'Georgia', serif;
             font-size: 1.15rem;
-            color: #2c3e50;
+            color: #2c221e;
             line-height: 1.8;
             margin-bottom: 20px;
         }
 
-        /* Animación de apertura estilo papel desplegándose */
-        @keyframes abrirCarta {
+        /* Animación de papel saliendo hacia arriba suavemente */
+        @keyframes deslizarDesdeSobre {
             0% {
                 opacity: 0;
-                transform: translateY(80px) scaleY(0.5);
+                transform: translateY(100px) scale(0.9);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0) scaleY(1);
+                transform: translateY(0) scale(1);
             }
         }
 
@@ -110,12 +127,12 @@
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
-            border-top: 1px solid #e0dcd0;
+            border-top: 1px solid #d4c5a9;
             padding-top: 15px;
         }
 
         .btn-nav {
-            background-color: #34495e;
+            background-color: #8c6d53;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -126,7 +143,38 @@
         }
 
         .btn-nav:hover {
-            background-color: #2c3e50;
+            background-color: #6b513d;
+        }
+
+        /* Reproductor de música flotante */
+        .reproductor {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(244, 234, 220, 0.9);
+            padding: 10px 15px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            border: 1px solid #b89768;
+        }
+
+        .btn-musica {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            font-size: 0.9rem;
+        }
+
+        .btn-musica:hover {
+            background: #962d22;
         }
 
         /* Pantalla de Fuegos Artificiales */
@@ -142,13 +190,12 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            animation: fadeIn 0.5s ease;
         }
 
         .fuegos-artificiales h2 {
-            color: #ffcc00;
+            color: #f1c40f;
             font-size: 2.8rem;
-            text-shadow: 0 0 20px #ff3366, 0 0 40px #ff0055;
+            text-shadow: 0 0 20px #e74c3c, 0 0 40px #c0392b;
             animation: latido 1s infinite alternate;
             text-align: center;
             padding: 0 20px;
@@ -162,22 +209,35 @@
 </head>
 <body>
 
-    <!-- Pantalla de Fuegos Artificiales para la Carta 3 -->
+    <!-- Música de fondo romántica -->
+    <audio id="musicaFondo" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf756.mp3?filename=romantic-guitars-112133.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+    </audio>
+
+    <div class="reproductor">
+        <span style="font-size: 0.9rem; color: #5c4033;">🎵 Música romántica</span>
+        <button class="btn-musica" id="btnMusica" onclick="toggleMusica()">Reproducir</button>
+    </div>
+
+    <!-- Pantalla de Fuegos Artificiales -->
     <div id="pantallaFuegos" class="fuegos-artificiales">
         <h2>✨ ¡Feliz Año Nuevo! 🎆🎇</h2>
         <p style="color: white; font-size: 1.2rem; font-family: Georgia, serif;">Abriendo tu última carta...</p>
     </div>
 
-    <div class="container">
+    <div class="container" id="mainContainer">
         <h1>¡Feliz Fin de Año, mi amor! 🥂 ✨</h1>
-        <p class="subtitulo">Tengo preparadas unas palabras muy especiales para ti.</p>
+        <p class="subtitulo">Tengo tres sobres con mensajes muy especiales para ti.</p>
         
-        <!-- Botón inicial para abrir la Carta 1 -->
-        <button class="btn-abrir" onclick="mostrarCarta(1)">Abrir primera carta 💌</button>
+        <!-- SOBRE 1 (Pantalla Inicial) -->
+        <div id="sobre1" class="sobre-container" onclick="mostrarCarta(1)">
+            <div class="sello-cera">💌</div>
+            <div class="texto-sobre">Abrir primera carta</div>
+        </div>
 
         <!-- CARTA 1 -->
         <div id="carta1" class="hoja-carta">
-            <h3>Carta 1: El inicio de todo y nuestra confianza</h3>
             <p>Cuando te conocí, creí que ibas a ser una persona pasajera, como los demás, como todas las personas que conocí y que me hablaron. Yo siempre fui alguien muy sociable, pero contigo siempre fue más que eso; tuve una conexión y una confianza muy fuerte contigo. ¿Pero sabes por qué? Eres una persona que tiene mucho conocimiento y sabe tantas cosas... Tal vez yo sea solo un chico un poco inmaduro, pero me hiciste cambiar por completo mi forma de pensar.</p>
             <div class="botones-navegacion">
                 <span></span>
@@ -185,50 +245,91 @@
             </div>
         </div>
 
+        <!-- SOBRE 2 -->
+        <div id="sobre2" class="sobre-container" style="display:none;" onclick="mostrarCarta(2)">
+            <div class="sello-cera">💌</div>
+            <div class="texto-sobre">Abrir segunda carta</div>
+        </div>
+
         <!-- CARTA 2 -->
         <div id="carta2" class="hoja-carta">
-            <h3>Carta 2: Mi pilar y mi guía</h3>
             <p>Siempre has estado ahí para mí, has sido mi pilar. Puede que sea un poco terco, pero siempre me has tenido paciencia, nunca te enojas, siempre me escuchas y quieres lo mejor para mí. Gracias por tu tiempo y por todo lo que has hecho por mí, tanto en lo emocional como en lo personal. Me has aconsejado cambiar mi mentalidad y es algo que valoro muchísimo. Espero ser también un ejemplo a seguir para los demás cuando crezca y superarme a mí mismo, tal como me has dicho que lo haga.</p>
             <div class="botones-navegacion">
-                <button class="btn-nav" onclick="mostrarCarta(1)">⬅️ Volver</button>
+                <button class="btn-nav" onclick="regresarSobre(1)">⬅️ Volver al sobre</button>
                 <button class="btn-nav" onclick="lanzarFuegosYCarta3()">Siguiente carta 🎆</button>
             </div>
         </div>
 
+        <!-- SOBRE 3 -->
+        <div id="sobre3" class="sobre-container" style="display:none;" onclick="mostrarCarta(3)">
+            <div class="sello-cera">💌</div>
+            <div class="texto-sobre">Abrir tercera carta</div>
+        </div>
+
         <!-- CARTA 3 -->
         <div id="carta3" class="hoja-carta">
-            <h3>Carta 3: Un nuevo año a tu lado</h3>
             <p>En este nuevo año todo va a cambiar, verás una nueva versión mía. Podrás estar conmigo y decir: "Este es el hombre que siempre quise tener a mi lado", seré el hombre que tanto has querido. Por eso quiero que me sigas guiando, no te aburras de mí; sé que puedo llegar a ser inexperto o a veces un poco torpe, pero en serio tenme paciencia. Quiero cambiar y, si lo hago, verás que la pasaremos súper bien. Espero que este año nos podamos conocer aún más, pasar tiempo juntos y que sea el comienzo de una vida hermosa contigo a mi lado.<br><br>Quiero que seas tú, nadie más; quiero estar contigo y que tú estés para mí siempre. Quiero que el año comience con amor en cada momento. Te deseo un muy feliz año y recuerda: si no es contigo, no será un año feliz para mí. ¡Te amo de aquí al infinito! ❤️</p>
             <div class="botones-navegacion">
-                <button class="btn-nav" onclick="mostrarCarta(2)">⬅️ Volver</button>
+                <button class="btn-nav" onclick="regresarSobre(2)">⬅️ Volver al sobre</button>
                 <span></span>
             </div>
         </div>
     </div>
 
     <script>
-        function mostrarCarta(numero) {
-            // Ocultar botón principal y todas las cartas
-            document.querySelector('.btn-abrir').style.display = 'none';
+        let musica = document.getElementById('musicaFondo');
+        let btnMusica = document.getElementById('btnMusica');
+
+        function toggleMusica() {
+            if (musica.paused) {
+                musica.play();
+                btnMusica.innerText = "Pausar";
+            } else {
+                musica.pause();
+                btnMusica.innerText = "Reproducir";
+            }
+        }
+
+        function ocultarTodo() {
+            document.getElementById('sobre1').style.display = 'none';
+            document.getElementById('sobre2').style.display = 'none';
+            document.getElementById('sobre3').style.display = 'none';
             document.getElementById('carta1').style.display = 'none';
             document.getElementById('carta2').style.display = 'none';
             document.getElementById('carta3').style.display = 'none';
+        }
 
-            // Mostrar la carta elegida con efecto de hoja desplegándose
+        function mostrarCarta(numero) {
+            if (musica.paused) {
+                musica.play();
+                btnMusica.innerText = "Pausar";
+            }
+
+            ocultarTodo();
             let cartaActiva = document.getElementById('carta' + numero);
             cartaActiva.style.display = 'block';
             cartaActiva.scrollIntoView({ behavior: 'smooth' });
         }
 
+        function regresarSobre(numeroCartaAnterior) {
+            ocultarTodo();
+            if (numeroCartaAnterior === 1) {
+                document.getElementById('sobre1').style.display = 'block';
+            } else if (numeroCartaAnterior === 2) {
+                document.getElementById('sobre2').style.display = 'block';
+            }
+        }
+
         function lanzarFuegosYCarta3() {
-            // Mostrar los fuegos artificiales de celebración
             let fuegos = document.getElementById('pantallaFuegos');
             fuegos.style.display = 'flex';
 
-            // Esperar 2.5 segundos para cerrar los fuegos artificiales y mostrar la carta 3
             setTimeout(function() {
                 fuegos.style.display = 'none';
-                mostrarCarta(3);
+                ocultarTodo();
+                let carta3 = document.getElementById('carta3');
+                carta3.style.display = 'block';
+                carta3.scrollIntoView({ behavior: 'smooth' });
             }, 2500);
         }
     </script>
