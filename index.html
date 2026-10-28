@@ -1,338 +1,707 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para el amor de mi vida</title>
-    <style>
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #2c1d1a 0%, #4a3530 100%);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            color: #3b2f2f;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#401a35">
+<title>Para el amor de mi vida ❤️</title>
 
-        .container {
-            max-width: 650px;
-            width: 100%;
-            text-align: center;
-            background: rgba(244, 234, 220, 0.15);
-            backdrop-filter: blur(8px);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
+<style>
+:root {
+    --rosa: #ff8eb7;
+    --dorado: #d5ad70;
+    --papel: #fff6e8;
+}
 
-        h1 {
-            color: #f3e9d2;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
+* { box-sizing: border-box; }
 
-        p.subtitulo {
-            font-size: 1.1rem;
-            color: #d8cbb8;
-            margin-bottom: 30px;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 25px 14px 100px;
+    font-family: Georgia, serif;
+    color: #4b263c;
+    background:
+        radial-gradient(ellipse at 20% 20%, #77365f, transparent 40%),
+        radial-gradient(ellipse at 80% 80%, #a64d78, transparent 45%),
+        linear-gradient(140deg, #210f2b, #592543, #27102e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
 
-        /* Estilo del Sobre / Carta Cerrada */
-        .sobre-container {
-            background: #e6d7c3;
-            background-image: radial-gradient(circle, #f4eadc 10%, #d8c5a9 90%);
-            border: 2px solid #b89768;
-            padding: 35px 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            margin: 20px auto;
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            max-width: 400px;
-        }
+/* CORAZONES FLOTANTES */
 
-        .sobre-container:hover {
-            transform: scale(1.03);
-        }
+#corazones {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
 
-        .sello-cera {
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, #c0392b 0%, #962d22 100%);
-            border-radius: 50%;
-            margin: 0 auto 12px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            border: 2px dashed #e74c3c;
-            color: #f1c40f;
-            font-size: 1.3rem;
-        }
+.corazon {
+    position: absolute;
+    bottom: -60px;
+    color: #ff9dc5;
+    opacity: 0;
+    text-shadow: 0 0 12px #ff70ad;
+    animation: flotar linear infinite;
+}
 
-        .texto-sobre {
-            font-family: 'Georgia', serif;
-            color: #5c4033;
-            font-size: 1.15rem;
-            font-weight: bold;
-        }
+@keyframes flotar {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.7);
+        opacity: 0;
+    }
+    15% { opacity: .75; }
+    80% { opacity: .65; }
+    100% {
+        transform: translateY(-115vh) rotate(35deg) scale(1.3);
+        opacity: 0;
+    }
+}
 
-        /* Estilo de hoja de carta vintage (con textura inspirada en tu imagen) */
-        .hoja-carta {
-            display: none;
-            background-color: #f7f1e5;
-            background-image: linear-gradient(to bottom, rgba(212, 196, 168, 0.3) 1px, transparent 1px);
-            background-size: 100% 32px;
-            padding: 40px 30px;
-            border-radius: 10px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            text-align: left;
-            margin-top: 20px;
-            position: relative;
-            animation: deslizarDesdeSobre 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            border: 3px solid #b89768;
-        }
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 680px;
+    padding: 30px 22px;
+    text-align: center;
+    background: rgba(255, 238, 247, .10);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 211, 231, .45);
+    border-radius: 25px;
+    box-shadow: 0 20px 70px #10071580;
+    animation: aparecer 1.2s ease;
+}
 
-        .hoja-carta p {
-            font-family: 'Georgia', serif;
-            font-size: 1.15rem;
-            color: #2c221e;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        @keyframes deslizarDesdeSobre {
-            0% {
-                opacity: 0;
-                transform: translateY(100px) scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
+h1 {
+    color: #ffe6f0;
+    font-size: clamp(1.8rem, 6vw, 2.7rem);
+    text-shadow: 0 0 18px #ff78b4;
+    margin: 5px 0 15px;
+}
 
-        .botones-navegacion {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            border-top: 1px solid #b89768;
-            padding-top: 15px;
-        }
+.subtitulo {
+    color: #ffe0ee;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
 
-        .btn-nav {
-            background-color: #8c6d53;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Georgia', serif;
-            transition: background 0.3s;
-        }
+.decoracion {
+    color: #ffc2da;
+    letter-spacing: 7px;
+    font-size: 1.3rem;
+    margin: 12px 0;
+}
 
-        .btn-nav:hover {
-            background-color: #6b513d;
-        }
+/* SOBRES */
 
-        /* Reproductor de música flotante */
-        .reproductor {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(244, 234, 220, 0.9);
-            padding: 10px 15px;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-            border: 1px solid #b89768;
-        }
+.sobre-container {
+    position: relative;
+    max-width: 410px;
+    min-height: 210px;
+    margin: 25px auto;
+    padding: 30px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid var(--dorado);
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, transparent 49%, #ddc4a5 50%, transparent 51%),
+        linear-gradient(225deg, transparent 49%, #ead7bc 50%, transparent 51%),
+        linear-gradient(145deg, #fff3dc, #d9bd99);
+    box-shadow: 0 12px 35px #16081775;
+    transition: transform .35s, box-shadow .35s;
+}
 
-        .btn-musica {
-            background: #c0392b;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Georgia', serif;
-            font-size: 0.9rem;
-        }
+.sobre-container:hover {
+    transform: translateY(-5px) scale(1.025);
+    box-shadow: 0 15px 35px #ff8eb74d;
+}
 
-        .btn-musica:hover {
-            background: #962d22;
-        }
+.sello-cera {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 25%, #ff839e, #a31d4c 75%);
+    border: 3px dashed #ffc0d2;
+    color: #fff1f5;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    box-shadow: 0 5px 15px #50132c55;
+    margin-bottom: 14px;
+}
 
-        /* Pantalla de Fuegos Artificiales */
-        .fuegos-artificiales {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 999;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+.texto-sobre {
+    color: #63374b;
+    font-weight: bold;
+    font-size: 1.12rem;
+}
 
-        .fuegos-artificiales h2 {
-            color: #f1c40f;
-            font-size: 2.8rem;
-            text-shadow: 0 0 20px #e74c3c, 0 0 40px #c0392b;
-            animation: latido 1s infinite alternate;
-            text-align: center;
-            padding: 0 20px;
-        }
+/* CARTAS */
 
-        @keyframes latido {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
-        }
-    </style>
+.hoja-carta {
+    display: none;
+    position: relative;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 31px,
+            #d8bca244 32px
+        ),
+        linear-gradient(120deg, #fff9ed, #f4e5cd);
+    padding: 38px 25px 25px;
+    border: 3px double #bd9664;
+    border-radius: 5px;
+    box-shadow: 0 18px 45px #170a1870;
+    text-align: left;
+    margin: 20px auto;
+    overflow-wrap: anywhere;
+}
+
+.hoja-carta.visible {
+    display: block;
+    animation: sacarCarta 1.15s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes sacarCarta {
+    0% {
+        opacity: 0;
+        transform: translateY(100px) scale(.88);
+        clip-path: inset(100% 0 0 0);
+    }
+    65% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* MARCO DE CORAZONES */
+
+.marco-corazones {
+    position: relative;
+    padding: 26px 16px;
+    border: 2px solid #d7a4a8;
+    border-radius: 15px;
+    background: #fff9f080;
+}
+
+.marco-corazones::before,
+.marco-corazones::after {
+    display: block;
+    text-align: center;
+    color: #d86d91;
+    letter-spacing: 5px;
+    font-size: 17px;
+    content: "♥  ♡  ♥  ♡  ♥";
+}
+
+.marco-corazones::before { margin-bottom: 18px; }
+.marco-corazones::after { margin-top: 20px; }
+
+.hoja-carta p {
+    font-size: 1.06rem;
+    line-height: 1.95;
+    color: #452a32;
+    margin: 0;
+}
+
+.hoja-carta .firma {
+    text-align: center;
+    margin-top: 18px;
+    color: #a43f67;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* BOTONES DE CORAZÓN */
+
+.botones-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid #caa779;
+}
+
+.btn-nav {
+    width: 86px;
+    height: 76px;
+    flex-shrink: 0;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 1.8rem;
+    background: linear-gradient(145deg, #ff9fc3, #d63378);
+    clip-path: polygon(
+        50% 91%, 9% 56%, 1% 37%, 4% 20%,
+        17% 7%, 33% 7%, 50% 25%,
+        67% 7%, 83% 7%, 96% 20%,
+        99% 37%, 91% 56%
+    );
+    filter: drop-shadow(0 5px 5px #79264c);
+    transition: transform .25s, filter .25s;
+}
+
+.btn-nav:hover {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 9px #ff82ba);
+}
+
+.btn-nav:focus-visible,
+.sobre-container:focus-visible,
+.btn-musica:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
+
+.instruccion {
+    color: #ffe0ee;
+    font-size: .9rem;
+    margin-top: 15px;
+}
+
+/* MÚSICA */
+
+.reproductor {
+    position: fixed;
+    z-index: 10;
+    bottom: 16px;
+    right: 12px;
+    left: 12px;
+    margin: auto;
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: 1px solid #ffd0e3;
+    background: #fff0f6ed;
+    box-shadow: 0 5px 25px #17081766;
+    color: #71324f;
+}
+
+.btn-musica {
+    border: none;
+    border-radius: 22px;
+    padding: 10px 14px;
+    background: #b82e69;
+    color: white;
+    font-family: Georgia, serif;
+    cursor: pointer;
+}
+
+/* FUEGOS ARTIFICIALES */
+
+#pantallaFuegos {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse, #51214b, #120b20 80%);
+    text-align: center;
+    padding: 20px;
+}
+
+#pantallaFuegos.activa {
+    display: flex;
+    animation: aparecer .5s ease;
+}
+
+#pantallaFuegos h2 {
+    z-index: 2;
+    color: #ffe2a1;
+    font-size: clamp(2rem, 8vw, 3.6rem);
+    text-shadow: 0 0 12px #ff598f, 0 0 30px #ffc45c;
+    animation: latido 1s ease-in-out infinite alternate;
+}
+
+#pantallaFuegos p {
+    z-index: 2;
+    color: #fff0f7;
+    font-size: 1.1rem;
+}
+
+@keyframes latido {
+    to { transform: scale(1.06); }
+}
+
+.explosion {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: var(--particulas);
+    animation: explotar 1.8s ease-out forwards;
+}
+
+@keyframes explotar {
+    0% { opacity: 1; transform: scale(.1); }
+    100% { opacity: 0; transform: scale(1.5); }
+}
+
+.oculto { display: none !important; }
+
+@media (max-width: 480px) {
+    .container { padding: 23px 13px; }
+    .hoja-carta { padding: 20px 12px 15px; }
+    .marco-corazones { padding: 20px 11px; }
+    .hoja-carta p { font-size: 1rem; line-height: 1.85; }
+    .btn-nav { width: 74px; height: 67px; }
+    .reproductor { font-size: .82rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Música de fondo romántica -->
-    <audio id="musicaFondo" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf756.mp3?filename=romantic-guitars-112133.mp3" type="audio/mpeg">
-        Tu navegador no soporta audio.
-    </audio>
+<div id="corazones" aria-hidden="true"></div>
 
-    <div class="reproductor">
-        <span style="font-size: 0.9rem; color: #5c4033;">🎵 Música romántica</span>
-        <button class="btn-musica" id="btnMusica" onclick="toggleMusica()">Reproducir</button>
+<!-- MELODÍA ROMÁNTICA DE FONDO -->
+<audio id="musicaFondo" loop preload="auto">
+    <source
+        src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf756.mp3?filename=romantic-guitars-112133.mp3"
+        type="audio/mpeg">
+</audio>
+
+<div class="reproductor">
+    <span>🎹 Nuestra melodía de amor</span>
+    <button class="btn-musica" id="btnMusica"
+            onclick="toggleMusica()">▶ Escuchar</button>
+</div>
+
+<!-- PANTALLA DE FUEGOS -->
+<div id="pantallaFuegos" aria-live="polite">
+    <h2>✨ ¡Feliz Año Nuevo, mi amor! 🎆</h2>
+    <p>Un nuevo año, otro capítulo de nuestra historia. ❤️</p>
+</div>
+
+<main class="container" id="mainContainer">
+
+    <div class="decoracion">♡ ♥ ♡ ♥ ♡</div>
+
+    <h1>Para el amor de mi vida 💗</h1>
+
+    <p class="subtitulo">
+        He preparado un pequeño sueño para ti.<br>
+        Tres cartas, tres pedacitos de mi corazón.<br>
+        Ábrelas despacito, mi amor. 💌
+    </p>
+
+    <!-- SOBRE 1 -->
+    <div id="sobre1" class="sobre-container"
+         role="button" tabindex="0"
+         aria-label="Abrir primera carta"
+         onclick="abrirCarta(1)"
+         onkeydown="tecladoSobre(event,1)">
+        <div class="sello-cera">💌</div>
+        <div class="texto-sobre">Para ti, mi persona favorita</div>
+        <p style="color:#81536a">♡ Abre tu primera carta ♡</p>
     </div>
 
-    <!-- Pantalla de Fuegos Artificiales -->
-    <div id="pantallaFuegos" class="fuegos-artificiales">
-        <h2>✨ ¡Feliz Año Nuevo! 🎆🎇</h2>
-        <p style="color: white; font-size: 1.2rem; font-family: Georgia, serif;">Abriendo tu última carta...</p>
-    </div>
-
-    <div class="container" id="mainContainer">
-        <h1>¡Feliz Fin de Año, mi amor! 🥂 ✨</h1>
-        <p class="subtitulo">Tengo tres sobres con mensajes muy especiales para ti.</p>
-        
-        <!-- SOBRE 1 -->
-        <div id="sobre1" class="sobre-container" onclick="abrirCarta(1)">
-            <div class="sello-cera">💌</div>
-            <div class="texto-sobre">Abrir primera carta</div>
-        </div>
-
-        <!-- CARTA 1 -->
-        <div id="carta1" class="hoja-carta">
+    <!-- CARTA 1 -->
+    <section id="carta1" class="hoja-carta">
+        <div class="marco-corazones">
             <p>Cuando te conocí, creí que ibas a ser una persona pasajera, como los demás, como todas las personas que conocí y que me hablaron. Yo siempre fui alguien muy sociable, pero contigo siempre fue más que eso; tuve una conexión y una confianza muy fuerte contigo. ¿Pero sabes por qué? Eres una persona que tiene mucho conocimiento y sabe tantas cosas... Tal vez yo sea solo un chico un poco inmaduro, pero me hiciste cambiar por completo mi forma de pensar.</p>
-            <div class="botones-navegacion">
-                <span></span>
-                <button class="btn-nav" onclick="siguienteSobre(2)">Siguiente sobre ➡️</button>
-            </div>
         </div>
 
-        <!-- SOBRE 2 -->
-        <div id="sobre2" class="sobre-container" style="display:none;" onclick="abrirCarta(2)">
-            <div class="sello-cera">💌</div>
-            <div class="texto-sobre">Abrir segunda carta</div>
-        </div>
+        <p class="firma">Con todo mi corazón, para ti. ❤️</p>
 
-        <!-- CARTA 2 -->
-        <div id="carta2" class="hoja-carta">
-            <p>Siempre has estado ahí para mí, has sido mi pilar. Puede que sea un poco terco, pero siempre me has tenido paciencia, nunca te enojas, siempre me escuchas y quieres lo mejor para mí. Gracias por tu tiempo y por todo lo que has hecho por mí, tanto en lo emocional como en lo personal. Me has aconsejado cambiar mi mentalidad y es algo que valoro muchísimo. Espero ser también un ejemplo a seguir para los demás cuando crezca y superarme a mí mismo, tal como me has dicho que lo haga.</p>
-            <div class="botones-navegacion">
-                <button class="btn-nav" onclick="regresarSobre(1)">⬅️ Volver</button>
-                <button class="btn-nav" onclick="lanzarFuegosYCarta3()">Siguiente sobre 🎆</button>
-            </div>
+        <div class="botones-navegacion">
+            <span></span>
+            <button class="btn-nav" onclick="siguienteSobre(2)"
+                    aria-label="Siguiente carta">➜</button>
         </div>
+        <p class="instruccion">Pulsa el corazón para continuar 💗</p>
+    </section>
 
-        <!-- SOBRE 3 -->
-        <div id="sobre3" class="sobre-container" style="display:none;" onclick="abrirCarta(3)">
-            <div class="sello-cera">💌</div>
-            <div class="texto-sobre">Abrir tercera carta</div>
-        </div>
-
-        <!-- CARTA 3 -->
-        <div id="carta3" class="hoja-carta">
-            <p>En este nuevo año todo va a cambiar, verás una nueva versión mía. Podrás estar conmigo y decir: "Este es el hombre que siempre quise tener a mi lado", seré el hombre que tanto has querido. Por eso quiero que me sigas guiando, no te aburras de mí; sé que puedo llegar a ser inexperto o a veces un poco torpe, pero en serio tenme paciencia. Quiero cambiar y, si lo hago, verás que la pasaremos súper bien. Espero que este año nos podamos conocer aún más, pasar tiempo juntos y que sea el comienzo de una vida hermosa contigo a mi lado.<br><br>Quiero que seas tú, nadie más; quiero estar contigo y que tú estés para mí siempre. Quiero que el año comience con amor en cada momento. Te deseo un muy feliz año y recuerda: si no es contigo, no será un año feliz para mí. ¡Te amo de aquí al infinito! ❤️</p>
-            <div class="botones-navegacion">
-                <button class="btn-nav" onclick="regresarSobre(2)">⬅️ Volver</button>
-                <span></span>
-            </div>
-        </div>
+    <!-- SOBRE 2 -->
+    <div id="sobre2" class="sobre-container oculto"
+         role="button" tabindex="0"
+         aria-label="Abrir segunda carta"
+         onclick="abrirCarta(2)"
+         onkeydown="tecladoSobre(event,2)">
+        <div class="sello-cera">💌</div>
+        <div class="texto-sobre">Un agradecimiento para ti</div>
+        <p style="color:#81536a">♡ Abre tu segunda carta ♡</p>
     </div>
 
-    <script>
-        let musica = document.getElementById('musicaFondo');
-        let btnMusica = document.getElementById('btnMusica');
+    <!-- CARTA 2 -->
+    <section id="carta2" class="hoja-carta">
+        <div class="marco-corazones">
+            <p>Siempre has estado ahí para mí, has sido mi pilar. Puede que sea un poco terco, pero siempre me has tenido paciencia, nunca te enojas, siempre me escuchas y quieres lo mejor para mí. Gracias por tu tiempo y por todo lo que has hecho por mí, tanto en lo emocional como en lo personal. Me has aconsejado cambiar mi mentalidad y es algo que valoro muchísimo. Espero ser también un ejemplo a seguir para los demás cuando crezca y superarme a mí mismo, tal como me has dicho que lo haga.</p>
+        </div>
 
-        function toggleMusica() {
-            if (musica.paused) {
-                musica.play();
-                btnMusica.innerText = "Pausar";
-            } else {
-                musica.pause();
-                btnMusica.innerText = "Reproducir";
-            }
+        <p class="firma">Gracias por estar en mi vida. ❤️</p>
+
+        <div class="botones-navegacion">
+            <button class="btn-nav" onclick="mostrarCarta(1)"
+                    aria-label="Volver a la carta anterior">⬅</button>
+            <button class="btn-nav" onclick="lanzarFuegosYCarta3()"
+                    aria-label="Ir a la última carta">➜</button>
+        </div>
+        <p class="instruccion">Todavía tengo algo más que decirte... 💞</p>
+    </section>
+
+    <!-- SOBRE 3 -->
+    <div id="sobre3" class="sobre-container oculto"
+         role="button" tabindex="0"
+         aria-label="Abrir tercera carta"
+         onclick="abrirCarta(3)"
+         onkeydown="tecladoSobre(event,3)">
+        <div class="sello-cera">💌</div>
+        <div class="texto-sobre">La promesa de un nuevo año</div>
+        <p style="color:#81536a">♡ La última carta es para ti ♡</p>
+    </div>
+
+    <!-- CARTA 3 -->
+    <section id="carta3" class="hoja-carta">
+        <div class="marco-corazones">
+            <p>En este nuevo año todo va a cambiar, verás una nueva versión mía. Podrás estar conmigo y decir: "Este es el hombre que siempre quise tener a mi lado", seré el hombre que tanto has querido. Por eso quiero que me sigas guiando, no te aburras de mí; sé que puedo llegar a ser inexperto o a veces un poco torpe, pero en serio tenme paciencia. Quiero cambiar y, si lo hago, verás que la pasaremos súper bien. Espero que este año nos podamos conocer aún más, pasar tiempo juntos y que sea el comienzo de una vida hermosa contigo a mi lado.<br><br>Quiero que seas tú, nadie más; quiero estar contigo y que tú estés para mí siempre. Quiero que el año comience con amor en cada momento. Te deseo un muy feliz año y recuerda: si no es contigo, no será un año feliz para mí. ¡Te amo de aquí al infinito! ❤️</p>
+        </div>
+
+        <p class="firma">Tú y yo, escribiendo nuestra historia. 💗</p>
+
+        <div class="botones-navegacion">
+            <button class="btn-nav" onclick="mostrarCarta(2)"
+                    aria-label="Volver a la carta anterior">⬅</button>
+            <span></span>
+        </div>
+        <p class="instruccion">Te elegiría una y mil veces. 💞</p>
+    </section>
+
+    <div class="decoracion">♡ ♥ ♡ ♥ ♡</div>
+    <p class="subtitulo">Hecho con amor, solamente para ti. 💌</p>
+</main>
+
+<script>
+const musica = document.getElementById('musicaFondo');
+const btnMusica = document.getElementById('btnMusica');
+
+const ids = [
+    'sobre1', 'sobre2', 'sobre3',
+    'carta1', 'carta2', 'carta3'
+];
+
+let temporizadorFuegos;
+let intervaloFuegos;
+let musicaIniciada = false;
+
+/* MÚSICA */
+
+function toggleMusica() {
+    if (musica.paused) {
+        musica.play().then(() => {
+            btnMusica.textContent = '❚❚ Pausar';
+        }).catch(() => {
+            btnMusica.textContent = '▶ Intentar de nuevo';
+        });
+    } else {
+        musica.pause();
+        btnMusica.textContent = '▶ Escuchar';
+    }
+}
+
+function iniciarMusica() {
+    if (musicaIniciada) return;
+
+    musicaIniciada = true;
+
+    musica.play().then(() => {
+        btnMusica.textContent = '❚❚ Pausar';
+    }).catch(() => {
+        btnMusica.textContent = '▶ Escuchar';
+        musicaIniciada = false;
+    });
+}
+
+musica.addEventListener('ended', () => {
+    btnMusica.textContent = '▶ Escuchar';
+});
+
+/* CORAZONES */
+
+function crearCorazones() {
+    const fondo = document.getElementById('corazones');
+    const simbolos = ['♥', '♡', '❤', '💕', '💗'];
+
+    for (let i = 0; i < 38; i++) {
+        const h = document.createElement('span');
+        h.className = 'corazon';
+        h.textContent =
+            simbolos[Math.floor(Math.random() * simbolos.length)];
+
+        h.style.left = Math.random() * 100 + '%';
+        h.style.fontSize = (12 + Math.random() * 27) + 'px';
+        h.style.animationDuration = (9 + Math.random() * 13) + 's';
+        h.style.animationDelay = (-Math.random() * 20) + 's';
+
+        fondo.appendChild(h);
+    }
+}
+
+/* NAVEGACIÓN DE CARTAS */
+
+function ocultarTodo() {
+    ids.forEach(id => {
+        const elemento = document.getElementById(id);
+        elemento.classList.remove('visible');
+        elemento.classList.add('oculto');
+    });
+}
+
+function mostrarElemento(elemento) {
+    elemento.classList.remove('oculto');
+    elemento.classList.remove('visible');
+
+    void elemento.offsetWidth;
+
+    if (elemento.classList.contains('hoja-carta')) {
+        elemento.classList.add('visible');
+    }
+
+    elemento.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
+
+function abrirCarta(numero) {
+    iniciarMusica();
+    ocultarTodo();
+
+    const carta = document.getElementById('carta' + numero);
+    mostrarElemento(carta);
+}
+
+function siguienteSobre(numero) {
+    ocultarTodo();
+    mostrarElemento(document.getElementById('sobre' + numero));
+}
+
+function mostrarCarta(numero) {
+    ocultarTodo();
+    mostrarElemento(document.getElementById('carta' + numero));
+}
+
+function tecladoSobre(evento, numero) {
+    if (evento.key === 'Enter' || evento.key === ' ') {
+        evento.preventDefault();
+        abrirCarta(numero);
+    }
+}
+
+/* FUEGOS ARTIFICIALES */
+
+function crearExplosion() {
+    const pantalla = document.getElementById('pantallaFuegos');
+
+    const colores = [
+        '#ff79bd',
+        '#ffd166',
+        '#fff1f8',
+        '#a8e6ff',
+        '#d8a7ff'
+    ];
+
+    for (let n = 0; n < 7; n++) {
+        const explosion = document.createElement('div');
+        explosion.className = 'explosion';
+
+        const x = 8 + Math.random() * 84;
+        const y = 8 + Math.random() * 78;
+        const color =
+            colores[Math.floor(Math.random() * colores.length)];
+
+        const particulas = [];
+
+        for (let i = 0; i < 24; i++) {
+            const angulo = (Math.PI * 2 * i) / 24;
+            const distancia = 18 + Math.random() * 65;
+            const dx = Math.cos(angulo) * distancia;
+            const dy = Math.sin(angulo) * distancia;
+
+            particulas.push(
+                `${dx.toFixed(0)}px ${dy.toFixed(0)}px 2px ${color}`
+            );
         }
 
-        function ocultarTodo() {
-            document.getElementById('sobre1').style.display = 'none';
-            document.getElementById('sobre2').style.display = 'none';
-            document.getElementById('sobre3').style.display = 'none';
-            document.getElementById('carta1').style.display = 'none';
-            document.getElementById('carta2').style.display = 'none';
-            document.getElementById('carta3').style.display = 'none';
-        }
+        explosion.style.setProperty('--x', x + '%');
+        explosion.style.setProperty('--y', y + '%');
+        explosion.style.setProperty(
+            '--particulas',
+            particulas.join(',')
+        );
 
-        function abrirCarta(numero) {
-            if (musica.paused) {
-                musica.play();
-                btnMusica.innerText = "Pausar";
-            }
+        pantalla.appendChild(explosion);
 
-            ocultarTodo();
-            let cartaActiva = document.getElementById('carta' + numero);
-            cartaActiva.style.display = 'block';
-            cartaActiva.scrollIntoView({ behavior: 'smooth' });
-        }
+        setTimeout(() => explosion.remove(), 1900);
+    }
+}
 
-        function siguienteSobre(numeroSobre) {
-            ocultarTodo();
-            document.getElementById('sobre' + numeroSobre).style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+function lanzarFuegosYCarta3() {
+    iniciarMusica();
 
-        function regresarSobre(numeroCartaAnterior) {
-            ocultarTodo();
-            document.getElementById('sobre' + numeroCartaAnterior).style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    clearTimeout(temporizadorFuegos);
+    clearInterval(intervaloFuegos);
 
-        function lanzarFuegosYCarta3() {
-            let fuegos = document.getElementById('pantallaFuegos');
-            fuegos.style.display = 'flex';
+    const pantalla = document.getElementById('pantallaFuegos');
+    pantalla.classList.add('activa');
 
-            setTimeout(function() {
-                fuegos.style.display = 'none';
-                ocultarTodo();
-                let carta3 = document.getElementById('carta3');
-                carta3.style.display = 'block';
-                carta3.scrollIntoView({ behavior: 'smooth' });
-            }, 2500);
-        }
-    </script>
+    crearExplosion();
+    intervaloFuegos = setInterval(crearExplosion, 650);
+
+    temporizadorFuegos = setTimeout(() => {
+        clearInterval(intervaloFuegos);
+        pantalla.classList.remove('activa');
+
+        // Aparece el tercer sobre antes de abrir la carta final.
+        ocultarTodo();
+        mostrarElemento(document.getElementById('sobre3'));
+    }, 4000);
+}
+
+crearCorazones();
+</script>
 
 </body>
 </html>
